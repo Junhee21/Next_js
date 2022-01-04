@@ -49,6 +49,16 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
+
+          <a
+            href="http://localhost:3000/form/create"
+            className={styles.card}
+          >
+            <h2>Crearte Form &rarr;</h2>
+            <p>
+              simple create form!
+            </p>
+          </a>
         </div>
       </main>
 
