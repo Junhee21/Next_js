@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { useState } from 'react';
 
 export default function Home() {
+  const [page, setPage] = useState("");
   return (
     <div className={styles.container}>
       <Head>
@@ -53,12 +55,27 @@ export default function Home() {
           <a
             href="http://localhost:3000/form/create"
             className={styles.card}
+            target="_blank"
           >
             <h2>Crearte Form &rarr;</h2>
             <p>
-              simple create form!
+              Simple create form!
             </p>
           </a>
+
+          <div className={styles.card}>
+            <a
+              href={"http://localhost:3000/" + page}
+              target="_blank"
+            >
+              <h2>Dynamic Routes &rarr;</h2>
+            </a>
+            <p>
+              <input onChange={e => setPage(e.target.value)} />
+              <br />
+              Whatever you want!
+            </p>
+          </div>
         </div>
       </main>
 
