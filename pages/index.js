@@ -53,13 +53,13 @@ export default function Home() {
           </a>
 
           <a
-            href="http://localhost:3000/form/create"
+            href="http://localhost:3000/form/home"
             className={styles.card}
             target="_blank"
           >
-            <h2>Crearte Form &rarr;</h2>
+            <h2>Form &rarr;</h2>
             <p>
-              Simple create form!
+              Simple form!
             </p>
           </a>
 
