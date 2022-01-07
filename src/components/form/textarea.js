@@ -1,25 +1,26 @@
 import styles from '../../../styles/Home.module.css';
 import { useState, useEffect } from 'react';
+import classNames from 'classnames';
 
-export default function Textarea ({text, event, fontSize, row=1, value}) {
+export default function Textarea({value, event, fontSize, row = 1 }) {
     const [active, setActive] = useState(false);
     return (
-        <div style={{
-            position:'relative',
-            width: '95%',
-            margin: 'auto',
-        }}>
+        <div
+            style={{
+                position: 'relative',
+                width: '95%',
+                margin: 'auto',
+            }}
+        >
             <textarea
-                className={styles.textarea}
-                onChange={event}
-                style={{fontSize: fontSize}}
-                rows={row}
+                className={classNames(styles.textarea, active?styles.active:'')}
                 value={value}
-                // onFocus={e => setActive(true)} onBlur={e => setActive(false)}
-            >
-                {text}
-            </textarea>
-            <div className={styles.textareaBottomBorder}></div>
+                onChange={event}
+                onFocus={e => setActive(true)} onBlur={e => setActive(false)}
+                style={{ fontSize: fontSize }}
+                rows={row} />
+            <div className={styles.textareaBottomBorderDefault}></div>
+            <div className={classNames(styles.textareaBottomBorder, active?styles.active:'')}></div>
         </div>
     )
 }

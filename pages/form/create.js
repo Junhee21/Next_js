@@ -7,6 +7,7 @@ export default function createPage() {
       minHeight: '100vw',
       height: '100%',
       backgroundColor: '#C3E2DD',
+      position: 'relative',
     }}>
       <TopBar />
       <Create />

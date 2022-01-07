@@ -9,7 +9,9 @@ export default function createPage() {
             backgroundColor: '#C3E2DD',
         }}>
             <TopBar />
-            <div className={styles.card}>
+            <div className={styles.card}
+                style={{marginTop:'80px',}}
+            >
                 <a
                     href="http://localhost:3000/form/create"
                 >

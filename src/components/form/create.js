@@ -120,12 +120,12 @@ export default function Create() {
         <div className={styles.flexColumn}>
             <div className={classnames(styles.item, styles.borderTopBlue)}>
                 <Textarea
-                    text={form.title}
+                    value={form.title}
                     event={e => updateHead("title", e.target.value)}
                     fontSize={40}
                 />
                 <Textarea
-                    text={form.info}
+                    value={form.info}
                     event={e => updateHead("info", e.target.value)}
                     fontSize={20}
                 />
@@ -167,10 +167,9 @@ const Question = ({ question, deleteQuestion, updateQuestion,
             <div style={{ display: 'flex', height: 'auto', }}>
                 <div style={{ flex: '7', }}>
                     <Textarea
-                        text={question.title}
+                        value={question.title}
                         event={e => updateQuestion(question.uuid, "title", e.target.value)}
                         fontSize={30}
-                        value={question.title}
                     />
                 </div>
                 <select
@@ -206,10 +205,9 @@ const Question = ({ question, deleteQuestion, updateQuestion,
                     {question.options.map((option, index) => {
                         return <div key={index} style={{ display: 'flex', width: '70%', marginLeft: '40px', alignItems: 'center' }}>
                             <Textarea
-                                text={option.option}
+                                value={option.option}
                                 event={e => updateOption(question.uuid, option.uuid, e.target.value)}
                                 fontSize={20}
-                                value={option.option}
                             />
                             <br />
                             <button
@@ -237,11 +235,10 @@ const Question = ({ question, deleteQuestion, updateQuestion,
             {(question.questionType === 'text') &&
                 <div style={{ width: '70%', marginLeft: '40px', }}>
                     <Textarea
-                        text='텍스트를 입력하시오'
+                        value='텍스트를 입력하시오'
                         event={e => updateOption(question.uuid, question.options[0].uuid, e.target.value)}
                         fontSize={20}
                         row={5}
-                        value={question.options[0].option}
                     />
                 </div>
             }
