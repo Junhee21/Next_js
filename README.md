@@ -21,3 +21,11 @@ form에서 home, create 페이지 구분
 classnames로 여러 className 적용
 
 css 추가
+
+## 22 / 1 / 7
+
+ textarea의 text내용을 value property에 입력함으로써 Warning: Use the `defaultValue` or `value` props instead of setting children on 해결
+
+ textarea active animation 추가
+
+ topbar의 z-index을 1로 함으로써 상단에 고정
