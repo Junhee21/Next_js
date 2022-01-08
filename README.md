@@ -29,3 +29,7 @@ css 추가
  textarea active animation 추가
 
  topbar의 z-index을 1로 함으로써 상단에 고정
+
+ ## 22 / 1 / 8
+
+ data를 typescript로 만듬 next-env.d.ts. 파일을 통해 error 'cannot find moduels'...'' 해결
