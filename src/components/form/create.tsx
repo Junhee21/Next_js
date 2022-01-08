@@ -1,13 +1,14 @@
-import styles from '../../../styles/Home.module.css';
-import Textarea from './textarea';
 import { useState } from 'react';
 import { useRouter } from 'next/router'
 import { v4 as uuidv4 } from 'uuid';
 import classnames from 'classnames';
+import styles from '../../../styles/Home.module.css'
+import Textarea from './textarea';
+import { Form } from '../../interface/form';
 
 export default function Create() {
     const router = useRouter();
-    const [form, setForm] = useState({
+    const [form, setForm] = useState<Form>({
         uuid: uuidv4(),
         title: "제목을 입력하시오",
         info: "설문지 설명",
