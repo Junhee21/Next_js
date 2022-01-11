@@ -236,7 +236,7 @@ const Question = ({ question, deleteQuestion, updateQuestion,
             {(question.questionType === 'text') &&
                 <div style={{ width: '70%', marginLeft: '40px', }}>
                     <Textarea
-                        value='텍스트를 입력하시오'
+                        value={question.options[0].option}
                         event={e => updateOption(question.uuid, question.options[0].uuid, e.target.value)}
                         fontSize={20}
                         row={5}
