@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router'
 import { v4 as uuidv4 } from 'uuid';
 import classnames from 'classnames';
+import axios from 'axios';
 import styles from '../../../styles/Home.module.css'
 import Textarea from './textarea';
 import { Form } from '../../interface/form';
@@ -32,7 +33,13 @@ export default function Create() {
     }
 
     const submit = () => {
-        alert(form.questions.length);
+        axios.post('http://localhost:800/form/submit', form)
+        .then(function (response) {
+            console.log(response)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
         router.push('/form/home')
     }
 

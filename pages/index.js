@@ -55,7 +55,6 @@ export default function Home() {
           <a
             href="http://localhost:3000/form/home"
             className={styles.card}
-            target="_blank"
           >
             <h2>Form &rarr;</h2>
             <p>
@@ -66,7 +65,6 @@ export default function Home() {
           <div className={styles.card}>
             <a
               href={"http://localhost:3000/" + page}
-              target="_blank"
             >
               <h2>Dynamic Routes &rarr;</h2>
             </a>
