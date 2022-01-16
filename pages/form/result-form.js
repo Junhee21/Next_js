@@ -17,7 +17,10 @@ export default function ResultFormPage() {
             .then(function (res) {
                 setForm(res.data.form)
             })
-    }, []);
+            .catch(function (res) {
+                console.log(error)
+            })
+    }, [router.query.formId]);
 
     return (
         <div className={styles.formBackGround}>

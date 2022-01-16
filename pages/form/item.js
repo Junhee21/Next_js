@@ -15,7 +15,7 @@ export default function ItemPage() {
     useEffect(() => {
         const jsonForm = JSON.parse(router.query.form);
         setForm(jsonForm)
-    }, []);
+    }, [router.query.form]);
 
     useEffect(() => {
         if (typeof form.FormQuestions != "undefined") {
