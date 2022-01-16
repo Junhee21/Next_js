@@ -11,7 +11,7 @@ export default function resultFormPage() {
     const [form, setForm] = useState({});
 
     useEffect(() => {
-        axios.get('http://localhost:800/form/result', {
+        axios.get(process.env.NEXT_PUBLIC_API_FORM_RESULT, {
             params: { formId: router.query.formId }
         })
             .then(function (res) {
@@ -41,9 +41,6 @@ export default function resultFormPage() {
                         question={question}
                     />
                 })}
-                <button
-                    className={classnames(styles.h50, styles.w150, styles.cPointer, styles.borderR5, styles.m10)}
-                    onClick={() => console.log(form)}>Submit</button>
             </div>
         </div>
     )
@@ -67,7 +64,6 @@ const Question = ({ question }) => {
                         fontSize: '15px',
                         borderRadius: '5px',
                         textAlign: 'center',
-                        cursor: 'pointer',
                     }}
                 >
                     {question.questionType}

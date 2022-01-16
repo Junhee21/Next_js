@@ -37,7 +37,7 @@ export default function Create() {
     }
 
     const create = () => {
-        axios.post('http://localhost:800/form/create', form)
+        axios.post(process.env.NEXT_PUBLIC_API_FORM_CREATE, form)
             .then(function (response) {
                 console.log(response)
             })

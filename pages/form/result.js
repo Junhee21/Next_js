@@ -8,7 +8,7 @@ export default function resultPage() {
     const router = useRouter();
     const [allForm, setAllForm] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:800/form/all")
+        axios.get(process.env.NEXT_PUBLIC_API_FORM_ALL)
             .then(function (response) {
                 setAllForm(response.data.Forms)
             })
