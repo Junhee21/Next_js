@@ -21,8 +21,12 @@ export default function Create() {
         cp.questions.push({
             uuid: uuidv4(),
             title: "질문",
-            questionType: "checkbox",
+            questionType: "radio",
             options: [
+                {
+                    uuid: uuidv4(),
+                    option: "옵션"
+                },
                 {
                     uuid: uuidv4(),
                     option: "옵션"
@@ -32,14 +36,14 @@ export default function Create() {
         setForm(cp);
     }
 
-    const submit = () => {
-        axios.post('http://localhost:800/form/submit', form)
-        .then(function (response) {
-            console.log(response)
-        })
-        .catch(function (error) {
-            console.log(error)
-        })
+    const create = () => {
+        axios.post('http://localhost:800/form/create', form)
+            .then(function (response) {
+                console.log(response)
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
         router.push('/form/home')
     }
 
@@ -69,6 +73,10 @@ export default function Create() {
         if (key === 'questionType') {
             cp.questions[foundIndex].options =
                 [
+                    {
+                        uuid: uuidv4(),
+                        option: "옵션"
+                    },
                     {
                         uuid: uuidv4(),
                         option: "옵션"
@@ -155,7 +163,7 @@ export default function Create() {
                     onClick={e => addQuestion()}>Add Question</button>
                 <button
                     className={classnames(styles.h50, styles.w150, styles.cPointer, styles.borderR5, styles.m10)}
-                    onClick={e => submit()}>submit</button>
+                    onClick={e => create()}>Create</button>
             </div>
             <br />
             <br />
@@ -171,7 +179,7 @@ export default function Create() {
 const Question = ({ question, deleteQuestion, updateQuestion,
     addOption, deleteOption, updateOption }) => {
     return (
-        <div className={styles.item}>
+        <div className={styles.item} style={{minHeight:'150px'}}>
             <div style={{ display: 'flex', height: 'auto', }}>
                 <div style={{ flex: '7', }}>
                     <Textarea
@@ -192,7 +200,6 @@ const Question = ({ question, deleteQuestion, updateQuestion,
                     onChange={e => updateQuestion(question.uuid, "questionType", e.target.value)}
                     value={question.questionType}
                 >
-                    <option value="checkbox">checkbox</option>
                     <option value="radio">radio</option>
                     <option value="text">text</option>
                 </select>
@@ -208,23 +215,23 @@ const Question = ({ question, deleteQuestion, updateQuestion,
             >
                 Delete
             </button>
-            {((question.questionType === "checkbox") || (question.questionType === "radio")) &&
+            {(question.questionType === "radio") &&
                 <div>
                     {question.options.map((option, index) => {
-                        return <div key={index} style={{ display: 'flex', width: '70%', marginLeft: '40px', alignItems: 'center' }}>
+                        return <div key={index} style={{ display: 'flex', width: '70%', marginLeft: '40px', marginTop:'10px', alignItems: 'center' }}>
                             <Textarea
                                 value={option.option}
                                 event={e => updateOption(question.uuid, option.uuid, e.target.value)}
                                 fontSize={20}
                             />
-                            <br />
-                            <button
-                                onClick={e => deleteOption(question.uuid, option.uuid)}
-                                style={{ background: 'white', borderRadius: '10px', height: '40px', width: '40px' }}
-                            >
-                                X
-                            </button>
-                            <br />
+                            {(question.options.length > 2) &&
+                                <button
+                                    onClick={e => deleteOption(question.uuid, option.uuid)}
+                                    style={{ background: 'white', borderRadius: '10px', height: '40px', width: '40px' }}
+                                >
+                                    X
+                                </button>
+                            }
                         </div>
                     })}
                     <button
@@ -241,13 +248,7 @@ const Question = ({ question, deleteQuestion, updateQuestion,
                 </div>
             }
             {(question.questionType === 'text') &&
-                <div style={{ width: '70%', marginLeft: '40px', }}>
-                    <Textarea
-                        value={question.options[0].option}
-                        event={e => updateOption(question.uuid, question.options[0].uuid, e.target.value)}
-                        fontSize={20}
-                        row={5}
-                    />
+                <div style={{ width: '70%', marginLeft: '40px'}}>
                 </div>
             }
         </div>

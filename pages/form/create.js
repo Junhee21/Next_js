@@ -1,15 +1,11 @@
-import TopBar from '../../src/components/form/topBar';
+import SideBar from '../../src/components/form/SideBar';
 import Create from '../../src/components/form/create';
+import styles from '../../styles/Home.module.css'
 
 export default function createPage() {
   return (
-    <div style={{
-      minHeight: '100vw',
-      height: '100%',
-      backgroundColor: '#C3E2DD',
-      position: 'relative',
-    }}>
-      <TopBar />
+    <div className={styles.formBackGround}>
+      <SideBar />
       <Create />
     </div>
   )
