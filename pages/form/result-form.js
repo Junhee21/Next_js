@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import classnames from 'classnames';
 
-export default function resultFormPage() {
+export default function ResultFormPage() {
     const router = useRouter();
     const [form, setForm] = useState({});
 

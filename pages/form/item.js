@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import classnames from 'classnames';
 
-export default function itemPage() {
+export default function ItemPage() {
     const router = useRouter();
     const [form, setForm] = useState({});
     const [results, setResults] = useState([]);

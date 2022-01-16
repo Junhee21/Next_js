@@ -1,8 +1,6 @@
 import styles from '../../styles/Home.module.css'
 import SideBar from '../../src/components/form/SideBar';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-export default function homePage() {
+export default function HomePage() {
     return (
         <div className={styles.formBackGround}>
             <SideBar />

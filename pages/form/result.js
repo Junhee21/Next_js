@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import axios from 'axios';
 
-export default function resultPage() {
+export default function ResultPage() {
     const router = useRouter();
     const [allForm, setAllForm] = useState([]);
     useEffect(() => {
