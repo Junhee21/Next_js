@@ -19,13 +19,9 @@ export default function Home() {
         justifyContent: 'center',
       }}>
         <button
-          onClick={() => router.push("/form/home")}
+          onClick={() => router.push("/form/signin")}
           style={{ fontSize: '100px', width: '500px', margin: '50px' }}
         >Go Form!</button>
-        <button
-          onClick={() => router.push("/rsp/home")}
-          style={{ fontSize: '100px', width: '500px', margin: '50px'  }}
-        >Go Rsp!</button>
       </div>
     </div>
   )

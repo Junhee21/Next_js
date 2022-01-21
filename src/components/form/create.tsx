@@ -7,9 +7,10 @@ import styles from '../../../styles/Home.module.css'
 import Textarea from './textarea';
 import { Form } from '../../interface/form';
 
-export default function Create() {
+export default function Create({accessToken}) {
     const router = useRouter();
     const [form, setForm] = useState<Form>({
+        accessToken: accessToken,
         uuid: uuidv4(),
         title: "제목을 입력하시오",
         info: "설문지 설명",
@@ -37,14 +38,16 @@ export default function Create() {
     }
 
     const create = () => {
-        axios.post(process.env.NEXT_PUBLIC_API_FORM_CREATE, form)
-            .then(function (response) {
-                console.log(response)
+        axios.post("http://localhost:8000/form/create", form)
+        .then(res => {
+            router.push({
+                pathname: '/form/mylist',
+                query: {accessToken: accessToken}
             })
-            .catch(function (error) {
-                console.log(error)
-            })
-        router.push('/form/home')
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     }
 
     const updateHead = (key, text) => {

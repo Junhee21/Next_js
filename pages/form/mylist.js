@@ -4,18 +4,20 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import axios from 'axios';
 
-export default function ListPage() {
+export default function MyListPage() {
     const router = useRouter();
     const [forms, setForms] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:8000/form/getall")
-            .then(function (response) {
-                setForms(response.data.forms)
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
-    }, [])
+        axios.get("http://localhost:8000/form/getmylist", {
+            params: { accessToken: router.query.accessToken }
+        })
+        .then(function (response) {
+            setForms(response.data.forms)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+    }, [router.query.accessToken])
 
     return (
         <div>
@@ -27,9 +29,9 @@ export default function ListPage() {
                                 width: '60%'}}
                         key={index}
                         onClick={e => {router.push({
-                            pathname: '/form/submit',
+                            pathname: '/form/result',
                             query: {
-                                form: JSON.stringify(form),
+                                formId: form.id,
                                 accessToken: router.query.accessToken
                             }
                         })}}>

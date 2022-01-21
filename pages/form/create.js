@@ -1,12 +1,14 @@
 import SideBar from '../../src/components/form/SideBar';
 import Create from '../../src/components/form/create';
 import styles from '../../styles/Home.module.css'
+import { useRouter } from 'next/router';
 
 export default function CreatePage() {
+  const router = useRouter();
   return (
-    <div className={styles.formBackGround}>
-      <SideBar />
-      <Create />
+    <div>
+      <SideBar accessToken={router.query.accessToken}/>
+      <Create accessToken={router.query.accessToken}/>
     </div>
   )
 }

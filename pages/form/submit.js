@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import classnames from 'classnames';
 
-export default function ItemPage() {
+export default function SubmitPage() {
     const router = useRouter();
     const [form, setForm] = useState({});
     const [results, setResults] = useState([]);
@@ -19,24 +19,30 @@ export default function ItemPage() {
 
     useEffect(() => {
         if (typeof form.FormQuestions != "undefined") {
-            const cp = new Array(form.FormQuestions.length).fill({
-                questionId: "0",
-                resultId: uuidv4(),
-                result: ""
-            });
+            const cp = [];
+            for (var i = 0; i<form.FormQuestions.length; i++) {
+                cp[i] = {
+                    questionId: "0",
+                    resultId: uuidv4(),
+                    result: ""
+                }
+            }
             setResults(cp);
         }
     }, [form]);
 
     const submit = () => {
-        axios.post(process.env.NEXT_PUBLIC_API_FORM_SUBMIT, results)
+        axios.post("http://localhost:8000/form/submit", results)
             .then(function (response) {
                 console.log(response)
             })
             .catch(function (error) {
                 console.log(error)
             })
-        router.push('/form/home')
+            router.push({
+                pathname: '/form/home',
+                query: {accessToken: router.query.accessToken}
+            })
     }
 
     const updateResult = (questionId, index, content) => {
@@ -47,8 +53,8 @@ export default function ItemPage() {
     }
 
     return (
-        <div className={styles.formBackGround}>
-            <SideBar />
+        <div>
+            <SideBar accessToken={router.query.accessToken}/>
             <div className={styles.flexColumn}>
                 <div className={classnames(styles.item, styles.borderTopBlue)}>
                     <Textarea

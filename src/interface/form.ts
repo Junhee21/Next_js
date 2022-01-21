@@ -1,4 +1,5 @@
 export interface Form{
+    accessToken: string;
     uuid: string;
     title: string;
     info: string;
