@@ -15,7 +15,7 @@ export default function SignUpPage() {
     }
     const signUp = () => {
         if (id && pw) {
-            axios.post("http://localhost:8000/form/signup", { userId: id, password: pw })
+            axios.post(process.env.NEXT_PUBLIC_API_FORM_SIGNUP, { userId: id, password: pw })
                 .then(function (response) {
                     console.log(response)
                     if (response.data.message === "Aleady used id") {

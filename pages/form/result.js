@@ -11,7 +11,7 @@ export default function ResultFormPage() {
     const [form, setForm] = useState({});
 
     useEffect(() => {
-        axios.get("http://localhost:8000/form/getresult", {
+        axios.get(process.env.NEXT_PUBLIC_API_FORM_GETRESULT, {
             params: { formId: router.query.formId }
         })
             .then(function (res) {

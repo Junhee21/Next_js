@@ -1,5 +1,5 @@
 import styles from '../../../styles/Home.module.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 
 export default function Textarea({value, event, fontSize, row = 1, disabled=false}) {

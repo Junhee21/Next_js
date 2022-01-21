@@ -32,7 +32,7 @@ export default function SubmitPage() {
     }, [form]);
 
     const submit = () => {
-        axios.post("http://localhost:8000/form/submit", results)
+        axios.post(process.env.NEXT_PUBLIC_API_FORM_SUBMIT, results)
             .then(function (response) {
                 console.log(response)
             })

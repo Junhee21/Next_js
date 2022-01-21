@@ -14,7 +14,7 @@ export default function SignInPage() {
         setPw(pw);
     }
     const signIn = () => {
-        axios.get("http://localhost:8000/form/signin", {
+        axios.get(process.env.NEXT_PUBLIC_API_FORM_SIGNIN, {
             params: {userId: id, password: pw}
         })
         .then(function (response) {

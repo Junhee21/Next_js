@@ -8,7 +8,7 @@ export default function MyListPage() {
     const router = useRouter();
     const [forms, setForms] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:8000/form/getmylist", {
+        axios.get(process.env.NEXT_PUBLIC_API_FORM_GETMYLIST, {
             params: { accessToken: router.query.accessToken }
         })
         .then(function (response) {

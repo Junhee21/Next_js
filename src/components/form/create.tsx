@@ -38,7 +38,7 @@ export default function Create({accessToken}) {
     }
 
     const create = () => {
-        axios.post("http://localhost:8000/form/create", form)
+        axios.post(process.env.NEXT_PUBLIC_API_FORM_CREATE, form)
         .then(res => {
             router.push({
                 pathname: '/form/mylist',

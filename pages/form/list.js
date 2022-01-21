@@ -8,7 +8,7 @@ export default function ListPage() {
     const router = useRouter();
     const [forms, setForms] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:8000/form/getall")
+        axios.get(process.env.NEXT_PUBLIC_API_FORM_GETALL)
             .then(function (response) {
                 setForms(response.data.forms)
             })

@@ -1,6 +1,5 @@
 import SideBar from '../../src/components/form/SideBar';
 import Create from '../../src/components/form/create';
-import styles from '../../styles/Home.module.css'
 import { useRouter } from 'next/router';
 
 export default function CreatePage() {
