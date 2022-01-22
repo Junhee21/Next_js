@@ -17,7 +17,6 @@ export default function SignUpPage() {
         if (id && pw) {
             axios.post(process.env.NEXT_PUBLIC_API_FORM_SIGNUP, { userId: id, password: pw })
                 .then(function (response) {
-                    console.log(response)
                     if (response.data.message === "Aleady used id") {
                         alert("이미 사용중인 아이디 입니다.");
                     } else {

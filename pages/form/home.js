@@ -8,7 +8,7 @@ export default function HomePage() {
     const router = useRouter();
     const [userId, setUserId] = useState();
     useEffect(() => {
-        axios.get(procees.env.NEXT_PUBLIC_API_FORM_GETUSERID, {
+        axios.get(process.env.NEXT_PUBLIC_API_FORM_GETUSERID, {
             params: { accessToken: router.query.accessToken }
         })
             .then(res => {

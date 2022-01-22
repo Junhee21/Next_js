@@ -36,6 +36,28 @@ export default function ListPage() {
                         {form.title}
                     </button>
                 })}
+                                {(forms.length === 0) && 
+                    <>
+                        <div style={{
+                            fontSize: "10vh",
+                            margin: "10vh"
+                        }}>EMPTY!</div>
+                        <button style={{
+                            fontSize: "10vh",
+                            border: "3px solid #0070f3",
+                            borderRadius: "15px",
+                            padding: "2vh",
+                            backgroundColor: "#C3E2DD"}}
+                            onClick={() => router.push({
+                                pathname: 'create',
+                                query: {accessToken: router.query.accessToken}
+                            })}
+                        
+                        >
+                            Go to Create
+                        </button>
+                    </>
+                }
             </div>
         </div>
     )

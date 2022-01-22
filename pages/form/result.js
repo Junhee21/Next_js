@@ -17,10 +17,29 @@ export default function ResultFormPage() {
             .then(function (res) {
                 setForm(res.data.form)
             })
-            .catch(function (res) {
+            .catch(function (error) {
                 console.log(error)
             })
     }, [router.query.formId]);
+
+    const confirmDelete = () => {
+        if (window.confirm("설문지를 삭제하면 설문결과도 모두 삭제됩니다. 정말 삭제하시겠습니까?")) {
+            axios.delete(process.env.NEXT_PUBLIC_API_FORM_DELETEFORM, {
+                data: {formId: router.query.formId}
+            })
+            .then(res => {
+                router.push({
+                    pathname: 'home',
+                    query: {
+                        accessToken: router.query.accessToken
+                    }
+                })
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        }
+    }
 
     return (
         <div>
@@ -44,6 +63,11 @@ export default function ResultFormPage() {
                         question={question}
                     />
                 })}
+                <button
+                    className={classnames(styles.h50, styles.w150, styles.cPointer, styles.borderR5, styles.m10)}
+                    onClick={() => confirmDelete()}
+                >Delete
+                </button>
             </div>
         </div>
     )

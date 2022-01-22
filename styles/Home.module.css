@@ -138,7 +138,9 @@
   border: 3px solid #0070f3;
   border-radius: 5px;
   width: 30%;
-  height: 50%;
+  height: auto;
+  padding-top: 5vh;  
+  padding-bottom: 5vh;  
 }
 
 .signTextFlex {
